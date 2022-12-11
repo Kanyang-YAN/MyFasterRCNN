@@ -101,7 +101,7 @@ def main(args):
                                                       num_workers=nw,
                                                       collate_fn=val_dataset.collate_fn)
 
-    # create model num_classes equal background + 20 classes
+    # create model num_classes equal background + 8 classes
     model = create_model(num_classes=args.num_classes + 1)
     # print(model)
 
@@ -192,7 +192,7 @@ if __name__ == "__main__":
     # 训练数据集的根目录(VOCdevkit)
     parser.add_argument('--data-path', default='./', help='dataset')
     # 检测目标类别数(不包含背景)
-    parser.add_argument('--num-classes', default=20, type=int, help='num_classes')
+    parser.add_argument('--num-classes', default=8, type=int, help='num_classes')
     # 文件保存地址
     parser.add_argument('--output-dir', default='./save_weights', help='path where to save')
     # 若需要接着上次训练，则指定上次训练保存权重文件地址
@@ -200,7 +200,7 @@ if __name__ == "__main__":
     # 指定接着从哪个epoch数开始训练
     parser.add_argument('--start_epoch', default=0, type=int, help='start epoch')
     # 训练的总epoch数
-    parser.add_argument('--epochs', default=15, type=int, metavar='N',
+    parser.add_argument('--epochs', default=20, type=int, metavar='N',
                         help='number of total epochs to run')
     # 学习率
     parser.add_argument('--lr', default=0.01, type=float,
@@ -214,7 +214,7 @@ if __name__ == "__main__":
                         metavar='W', help='weight decay (default: 1e-4)',
                         dest='weight_decay')
     # 训练的batch size
-    parser.add_argument('--batch_size', default=8, type=int, metavar='N',
+    parser.add_argument('--batch_size', default=3, type=int, metavar='N',
                         help='batch size when training.')
     parser.add_argument('--aspect-ratio-group-factor', default=3, type=int)
     # 是否使用混合精度训练(需要GPU支持混合精度)
